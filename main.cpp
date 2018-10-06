@@ -20,8 +20,8 @@ int main() {
 
         switch (choix) {
             case 0 :
-                ajoutPersonneQueue(fda, 1);
-                ajoutPersonneQueue(fda, 2);
+                ajoutPersonneQueue(fda, 'A');
+                ajoutPersonneQueue(fda, 'B');
                 break;
             case 1 :
                 suppEnTete(fda);

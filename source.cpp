@@ -24,11 +24,11 @@ void init(fileAttente *fda) {
 //Para-entrée : fda, num
 //Para-sortie : fda
 // Post-Cond : la file d'attente avec une nouvelle personne en queue
-void ajoutPersonneQueue(fileAttente *fda, int num) {
+void ajoutPersonneQueue(fileAttente *fda, char lettre) {
 
     maillon *np;
     np = (maillon *) malloc(sizeof(maillon));
-    np->numero = num;
+    np->nom = lettre;
     np->suivant = nullptr;
 
     if (fda->tete == nullptr) {
@@ -44,7 +44,11 @@ void ajoutPersonneQueue(fileAttente *fda, int num) {
 //Procedure permettant de consulter la personne en tete de file
 //Para-Entrée : fda
 void persTeteListe(fileAttente *fda) {
-    cout << "La personne au debut de la file est " << fda->tete->numero << "." << endl;
+    if (fda->tete == nullptr) {
+        cout << "La file est vide !" << endl;
+    } else {
+        cout << "La personne au debut de la file est " << fda->tete->nom << "." << endl;
+    }
 }
 
 //Procedure permettant de supprimer la personne en tete
@@ -86,3 +90,4 @@ void calculLongFda(fileAttente *fda) {
     }
 
 }
+
