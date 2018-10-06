@@ -29,5 +29,4 @@ void calculLongFda(fileAttente *fda);
 
 void demandeNom(char &nom);
 
-
 #endif //TP3_STRUCTURE_H

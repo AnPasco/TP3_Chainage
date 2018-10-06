@@ -11,7 +11,7 @@ int main() {
     fileAttente *fda;
     fda = (fileAttente *) malloc(sizeof(fileAttente));
 
-    cout << "FILE D'ATTENTE" << endl;
+    cout << "FILE D'ATTENTE";
     menu(choix);
 
     init(fda);

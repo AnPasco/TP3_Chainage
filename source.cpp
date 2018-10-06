@@ -23,7 +23,7 @@ void init(fileAttente *fda) {
     fda->queue = nullptr;
 }
 
-//
+//Procedure qui demande le nom de la personne
 void demandeNom(char &nom) {
     cout << "Rentrer le nom de la personne que vous souhaiter ajouter : " << endl;
     cin >> nom;
