@@ -15,16 +15,19 @@ typedef struct fileAttente {
     maillon *queue;
 } fileAttente;
 
-void menu();
+void menu(int &choix);
 
 void init(fileAttente *fda);
 
-void ajoutPersonneQueue(fileAttente *fda, char lettre);
+void ajoutPersonneQueue(fileAttente *fda, char nom);
 
 void persTeteListe(fileAttente *fda);
 
 void suppEnTete(fileAttente *fda);
 
 void calculLongFda(fileAttente *fda);
+
+void demandeNom(char &nom);
+
 
 #endif //TP3_STRUCTURE_H

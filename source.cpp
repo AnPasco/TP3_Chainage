@@ -4,12 +4,15 @@
 using namespace std;
 
 //Procedure qui affiche le menu
-void menu() {
-    cout << "0 - Ajouter une personne en queue" << endl;
+void menu(int &choix) {
+    cout << endl << "0 - Ajouter une personne en queue" << endl;
     cout << "1 - Retirer la personne en tete" << endl;
     cout << "2 - Consulter la personne en tete de file" << endl;
     cout << "3 - Calculer la longueur de la file d'attente" << endl;
     cout << "4 - Quitter" << endl;
+
+    cout << "Choisissez une option :" << endl;
+    cin >> choix;
 }
 
 //Procedure qui permet d'initiaiser la file d'attente
@@ -20,15 +23,21 @@ void init(fileAttente *fda) {
     fda->queue = nullptr;
 }
 
+//
+void demandeNom(char &nom) {
+    cout << "Rentrer le nom de la personne que vous souhaiter ajouter : " << endl;
+    cin >> nom;
+}
+
 //Procedure permettant d'ajouter une personne en queue de file
 //Para-entrée : fda, num
 //Para-sortie : fda
 // Post-Cond : la file d'attente avec une nouvelle personne en queue
-void ajoutPersonneQueue(fileAttente *fda, char lettre) {
+void ajoutPersonneQueue(fileAttente *fda, char nom) {
 
     maillon *np;
     np = (maillon *) malloc(sizeof(maillon));
-    np->nom = lettre;
+    np->nom = nom;
     np->suivant = nullptr;
 
     if (fda->tete == nullptr) {
@@ -63,6 +72,7 @@ void suppEnTete(fileAttente *fda) {
         temp = fda->tete;
         fda->tete = fda->tete->suivant;
         free(temp);
+        cout << "Personne supprimer ! " << endl;
     }
 }
 

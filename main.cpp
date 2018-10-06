@@ -5,14 +5,14 @@ using namespace std;
 
 int main() {
 
-    int choix;
+    int choix, nbPers;
+    char nom;
+
     fileAttente *fda;
     fda = (fileAttente *) malloc(sizeof(fileAttente));
 
     cout << "FILE D'ATTENTE" << endl;
-    menu();
-    cout << "Choisissez une option :" << endl;
-    cin >> choix;
+    menu(choix);
 
     init(fda);
 
@@ -20,8 +20,13 @@ int main() {
 
         switch (choix) {
             case 0 :
-                ajoutPersonneQueue(fda, 'A');
-                ajoutPersonneQueue(fda, 'B');
+                cout << "Combien de personne voulez vous ajouter ?" << endl;
+                cin >> nbPers;
+                while (nbPers != 0) {
+                    demandeNom(nom);
+                    ajoutPersonneQueue(fda, nom);
+                    nbPers--;
+                }
                 break;
             case 1 :
                 suppEnTete(fda);
@@ -37,8 +42,7 @@ int main() {
                 break;
         }
 
-        cout << "Choisissez une option :" << endl;
-        cin >> choix;
+        menu(choix);
     }
 
 }
