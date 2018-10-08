@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 
     int choix, nbPers;
-    char nom;
+    char *nom = (char *) malloc(sizeof(char) * 30);
 
     fileAttente *fda;
     fda = (fileAttente *) malloc(sizeof(fileAttente));
@@ -23,7 +23,9 @@ int main() {
                 cout << "Combien de personne voulez vous ajouter ?" << endl;
                 cin >> nbPers;
                 while (nbPers != 0) {
-                    demandeNom(nom);
+                    cout << "Veuillez saisir le nom de la personne dans la file d'attente (30 caracteres max): "
+                         << endl;
+                    cin >> nom;
                     ajoutPersonneQueue(fda, nom);
                     nbPers--;
                 }
@@ -38,11 +40,13 @@ int main() {
                 calculLongFda(fda);
                 break;
             default:
+                cout << "A plus !";
                 return 0;
                 break;
         }
 
         menu(choix);
     }
-
+    free(nom);
+    free(fda);
 }

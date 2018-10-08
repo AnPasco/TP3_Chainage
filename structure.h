@@ -6,7 +6,7 @@
 #define TP3_STRUCTURE_H
 
 typedef struct maillon {
-    char nom;
+    char nom[30];
     maillon *suivant;
 } maillon;
 
@@ -19,7 +19,7 @@ void menu(int &choix);
 
 void init(fileAttente *fda);
 
-void ajoutPersonneQueue(fileAttente *fda, char nom);
+void ajoutPersonneQueue(fileAttente *fda, char *nom);
 
 void persTeteListe(fileAttente *fda);
 
@@ -27,6 +27,6 @@ void suppEnTete(fileAttente *fda);
 
 void calculLongFda(fileAttente *fda);
 
-void demandeNom(char &nom);
+void tabAssign(char *nomEntre, char *nomMaillon);
 
 #endif //TP3_STRUCTURE_H
