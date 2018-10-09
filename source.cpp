@@ -23,15 +23,13 @@ void init(fileAttente *fda) {
     fda->queue = nullptr;
 }
 
-//Cette procédure permet de copier un tableau dans un autre
-//ENTREE : Pointeur vers l'indice 0 du tableau a copié, Pointeur vers l'indice 0 du tableau a remplir
-//SORTIE : RIEN
-void tabAssign(char *nomEntre, char *nomMaillon) {
-    int i = 0;
-    while (*(nomEntre + i) != '\0') {
-        *(nomMaillon + i) = *(nomEntre + i);
-        i++;
-    }
+//procedure qui désinitialise la file d'attente
+//Para-Entrée : fda
+//Para-Sortie : fda
+//La file d'attente est vide
+void desinit(fileAttente *fda) {
+    free(fda->tete);
+    free(fda->queue);
 }
 
 //Procedure permettant d'ajouter une personne en queue de file
@@ -42,7 +40,7 @@ void ajoutPersonneQueue(fileAttente *fda, char *nom) {
 
     maillon *np;
     np = (maillon *) malloc(sizeof(maillon));
-    tabAssign(nom, np->nom);
+    np->nom = nom;
     np->suivant = nullptr;
 
     if (fda->tete == nullptr) {
@@ -52,7 +50,13 @@ void ajoutPersonneQueue(fileAttente *fda, char *nom) {
         fda->queue = np;
     }
 
-    cout << "Personne ajoute ! " << endl;
+    cout << "La persone ";
+    int i = 0;
+    while (i < 30 && nom[i] != '\0') {
+        cout << nom[i];
+        i++;
+    }
+    cout << " a bien ete ajoute a la file d'attente." << endl;
 
 }
 

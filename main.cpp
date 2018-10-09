@@ -1,12 +1,14 @@
 #include <iostream>
+#include <iomanip>
 #include "structure.h"
 
 using namespace std;
 
 int main() {
 
+    int taille_input = sizeof(char) * 30;
     int choix, nbPers;
-    char *nom = (char *) malloc(sizeof(char) * 30);
+    char *nom;
 
     fileAttente *fda;
     fda = (fileAttente *) malloc(sizeof(fileAttente));
@@ -23,9 +25,10 @@ int main() {
                 cout << "Combien de personne voulez vous ajouter ?" << endl;
                 cin >> nbPers;
                 while (nbPers != 0) {
+                    nom = (char *) malloc(static_cast<size_t>(taille_input));
                     cout << "Veuillez saisir le nom de la personne dans la file d'attente (30 caracteres max): "
                          << endl;
-                    cin >> nom;
+                    cin >> setw(taille_input) >> nom;
                     ajoutPersonneQueue(fda, nom);
                     nbPers--;
                 }
@@ -47,6 +50,7 @@ int main() {
 
         menu(choix);
     }
+
     free(nom);
-    free(fda);
+    desinit(fda);
 }
