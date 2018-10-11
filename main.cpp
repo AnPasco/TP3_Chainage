@@ -7,7 +7,8 @@ using namespace std;
 int main() {
 
     int taille_input = sizeof(char) * 30;
-    int choix, nbPers;
+    int choix;
+    int nbPers;
     char *nom;
 
     fileAttente *fda;
